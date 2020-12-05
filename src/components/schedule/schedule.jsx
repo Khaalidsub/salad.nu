@@ -99,6 +99,7 @@ const ScheduleBody = () => {
 
   // prepare courses for render and memoize
   const { bins, days, hours } = useMemo(() => {
+ 
     const results = [...sections, ...discussions];
     const result = results.find((result) => result.unique_id === id);
     const coursesCpy = [...courses];
@@ -108,12 +109,14 @@ const ScheduleBody = () => {
     return binAndStyle(coursesCpy);
   }, [id, courses, sections, discussions]);
   const startHours = hours.slice(0, -1);
+  // console.log(startHours.slice(0,-2));
 
   return (
     <ScheduleContainer>
       <ScheduleContents>
         <HoursColumn hours={hours} />
         {days.map((day) => {
+        
           return (
             <DayColumn
               key={day}
